@@ -30,7 +30,7 @@ jobs:
     - name: Nix build
       run: nix build .#frontend
       working-directory: frontend
-name: CI - frontend
+name: frontend
 'on':
   pull_request:
     paths:

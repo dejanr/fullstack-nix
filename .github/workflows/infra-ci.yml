@@ -28,7 +28,7 @@ jobs:
         nix run .#infra-prod.init
         nix run .#infra-prod.plan
       working-directory: infra
-name: CI - infra
+name: infra
 'on':
   pull_request:
     paths:

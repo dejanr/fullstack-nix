@@ -1,4 +1,4 @@
-{ steps }:
+{ steps, ... }:
 {
   name = "backend/example";
   on = {

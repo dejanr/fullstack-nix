@@ -1,6 +1,6 @@
-{ steps }:
+{ steps, ... }:
 {
-  name = "CI - infra";
+  name = "infra";
   on = {
     push = {
       branches = [

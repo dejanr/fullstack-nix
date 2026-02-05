@@ -21,7 +21,7 @@ jobs:
     - name: Test
       run: nix develop .#default --impure --command go test ./...
       working-directory: backend/example
-name: CI - backend/example
+name: backend/example
 'on':
   pull_request:
     paths:

@@ -1,6 +1,6 @@
 { lib, steps }:
 {
-  name = "CI - frontend";
+  name = "frontend";
   on = {
     push = {
       branches = [
