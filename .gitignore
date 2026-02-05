@@ -1,0 +1,6 @@
+.devenv*
+.direnv*
+result*
+.pre-commit-config.yaml
+.DS_Store
+.env

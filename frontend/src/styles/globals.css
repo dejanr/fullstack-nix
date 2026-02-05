@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+:root {
+  color: #0f172a;
+  background-color: #f8fafc;
+  font-family: "Inter", "SF Pro Text", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f8fafc;
+}
+
+@layer base {
+  h1 {
+    @apply text-4xl font-semibold text-slate-900;
+  }
+
+  p {
+    @apply text-base text-slate-600;
+  }
+
+  button {
+    @apply rounded-full px-5 py-3 text-sm font-semibold transition;
+  }
+}
