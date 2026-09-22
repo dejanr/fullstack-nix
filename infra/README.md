@@ -18,15 +18,19 @@ direnv allow
 
 ### AWS Authentication
 
-```bash
-aws configure
-# or
-export AWS_ACCESS_KEY_ID=...
-export AWS_SECRET_ACCESS_KEY=...
+Use AWS CLI v2 to sign in locally with temporary credentials:
 
-# Verify
+```bash
+aws login
 aws sts get-caller-identity
 ```
+
+The pinned OpenTofu and AWS provider versions support this login directly—no
+credential exports are needed. Run `aws login` again when the session expires.
+For a named profile, use `aws login --profile <name>` and set
+`AWS_PROFILE=<name>` when running the infrastructure commands.
+
+CI continues to use credentials provided through GitHub Actions OIDC.
 
 ## Commands
 
