@@ -37,7 +37,7 @@
         steps.checkout
         steps.setupNix
         steps.setupMagicCache
-        steps.configureAwsOidc
+        (steps.configureAwsOidc "\${{ secrets.AWS_CI_ROLE_ARN }}")
         {
           name = "Generate and validate Terraform config";
           working-directory = "infra";

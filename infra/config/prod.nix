@@ -134,7 +134,7 @@ in
     roles = {
       deploy = {
         name = "fullstack-nix-prod-github-deploy";
-        subjects = [ "repo:example/fullstack-nix:ref:refs/heads/main" ];
+        subjects = [ "repo:dejanr/fullstack-nix:ref:refs/heads/main" ];
         policyStatements = [
           {
             actions = [ "s3:*" ];
@@ -161,17 +161,35 @@ in
       ci = {
         name = "fullstack-nix-prod-github-ci";
         subjects = [
-          "repo:example/fullstack-nix:ref:refs/heads/main"
-          "repo:example/fullstack-nix:ref:refs/heads/develop"
-          "repo:example/fullstack-nix:pull_request"
+          "repo:dejanr/fullstack-nix:ref:refs/heads/main"
+          "repo:dejanr/fullstack-nix:ref:refs/heads/develop"
+          "repo:dejanr/fullstack-nix:pull_request"
         ];
         policyStatements = [
           {
             actions = [
-              "s3:GetObject"
-              "s3:ListBucket"
+              "s3:Get*"
+              "s3:List*"
+              "cloudfront:Get*"
+              "cloudfront:List*"
+              "lambda:Get*"
+              "lambda:List*"
+              "iam:Get*"
+              "iam:List*"
+              "acm:DescribeCertificate"
+              "acm:ListCertificates"
+              "acm:ListTagsForCertificate"
             ];
             resources = [ "*" ];
+          }
+          {
+            actions = [
+              "s3:PutObject"
+              "s3:DeleteObject"
+            ];
+            resources = [
+              "arn:aws:s3:::${config.terraform.backend.s3.bucket}/${config.terraform.backend.s3.key}.tflock"
+            ];
           }
           {
             actions = [ "sts:GetCallerIdentity" ];

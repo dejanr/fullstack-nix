@@ -14,11 +14,11 @@
     };
   };
 
-  configureAwsOidc = {
+  configureAwsOidc = roleArn: {
     name = "Configure AWS credentials";
     uses = "aws-actions/configure-aws-credentials@v5.1.1";
     "with" = {
-      role-to-assume = "\${{ secrets.AWS_OIDC_ROLE_ARN }}";
+      role-to-assume = roleArn;
       aws-region = "\${{ env.AWS_REGION }}";
     };
   };

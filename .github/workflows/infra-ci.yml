@@ -22,7 +22,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v5.1.1
       with:
         aws-region: ${{ env.AWS_REGION }}
-        role-to-assume: ${{ secrets.AWS_OIDC_ROLE_ARN }}
+        role-to-assume: ${{ secrets.AWS_CI_ROLE_ARN }}
     - name: Generate and validate Terraform config
       run: |-
         nix run .#infra-prod.init

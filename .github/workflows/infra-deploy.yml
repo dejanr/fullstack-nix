@@ -18,7 +18,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v5.1.1
       with:
         aws-region: ${{ env.AWS_REGION }}
-        role-to-assume: ${{ secrets.AWS_OIDC_ROLE_ARN }}
+        role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
     - name: Ensure Terraform state bucket
       run: nix run .#infra-prod.create-state-bucket
       working-directory: infra

@@ -32,7 +32,7 @@
       runs-on = "self-hosted";
       steps = [
         steps.checkout
-        steps.configureAwsOidc
+        (steps.configureAwsOidc "\${{ secrets.AWS_DEPLOY_ROLE_ARN }}")
         {
           name = "Ensure Terraform state bucket";
           working-directory = "infra";
